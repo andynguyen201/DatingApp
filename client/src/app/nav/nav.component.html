@@ -4,7 +4,7 @@
       >Dating App</a
     >
 
-    <ul class="navbar-nav mr-auto" *ngIf="accountService.currentUser$ | async">
+    <ul class="navbar-nav mr-auto">
       <ng-container *ngIf="accountService.currentUser$ | async">
         <li class="nav-item">
           <a class="nav-link" routerLink="/members" routerLinkActive="active"
@@ -23,10 +23,22 @@
         </li>
       </ng-container>
 
-    </ul>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/errors" routerLinkActive="active"
+          >Error</a
+        >
+      </li>
 
-    <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
-      <a class="dropdown-toggle text-light" dropdownToggle>Welcome {{user.username | titlecase}}</a>
+    </ul>
+    
+    <div
+      class="dropdown"
+      *ngIf="accountService.currentUser$ | async as user"
+      dropdown
+    >
+      <a class="dropdown-toggle text-light" dropdownToggle
+        >Welcome {{ user.username | titlecase }}</a
+      >
       <div class="dropdown-menu mt-3" *dropdownMenu>
         <a class="dropdown-item">Edit Profile</a>
         <div class="dropdown-divider"></div>
@@ -56,9 +68,7 @@
         type="password"
         placeholder="Password"
       />
-      <button class="btn btn-success my-2 my-sm-0" type="submit">
-        Login
-      </button>
+      <button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
     </form>
   </div>
 </nav>
