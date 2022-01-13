@@ -4,8 +4,12 @@
       No messages yet... say hi by using the message box below
     </div>
 
-    <ul *ngIf="(messageService.messageThread$ | async)?.length > 0" class="chat">
-      <li *ngFor="let message of (messageService.messageThread$ | async)">
+    <ul #scrollMe
+      style="overflow: scroll; height: 500px;"
+      [scrollTop]="scrollMe.scrollHeight"
+      *ngIf="(messageService.messageThread$ | async)?.length > 0"
+      class="chat">
+      <li *ngFor="let message of messageService.messageThread$ | async">
         <div>
           <span class="chat-img float-right">
             <img
@@ -57,7 +61,13 @@
           placeholder="Send a private message"
         />
         <div class="input-group-append">
-          <button [disabled]="!messageForm.valid" class="btn btn-primary" type="submit">Send</button>
+          <button
+            [disabled]="!messageForm.valid"
+            class="btn btn-primary"
+            type="submit"
+          >
+            Send
+          </button>
         </div>
       </div>
     </form>
